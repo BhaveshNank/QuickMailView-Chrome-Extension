@@ -9,5 +9,12 @@
     <p>Click the button to summarize your emails.</p>
     <button id="summarizeBtn">Summarize Emails</button>
   </div>
-</body>
-</html>
+  <script>
+    document.getElementById("summarizeBtn").addEventListener("click", () => {
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            chrome.tabs.sendMessage(tabs[0].id, { action: "summarize" }, (response) => {
+                alert(response.summary);
+            });
+        });
+    });
+  </script>
