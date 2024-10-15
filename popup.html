@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Email Summarizer</title>
+  <title>Email Organizer & Smart Labeler</title>
+  <style>
+    .email-item {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    .label {
+      font-weight: bold;
+      display: block;
+    }
+    .read {
+      color: gray;
+    }
+  </style>
 </head>
 <body>
-  <h1>Email Summarizer</h1>
+  <h1>Email Organizer</h1>
   <div>
-    <p>Click the button to summarize your emails.</p>
-    <button id="summarizeBtn">Summarize Emails</button>
+    <p>Click the button to view organized emails:</p>
+    <button id="organizeBtn">Organize Emails</button>
+    <div id="emailList"></div>
   </div>
-  <script>
-    document.getElementById("summarizeBtn").addEventListener("click", () => {
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            chrome.tabs.sendMessage(tabs[0].id, { action: "summarize" }, (response) => {
-                alert(response.summary);
-            });
-        });
-    });
-  </script>
+  <script src="popup.js"></script>
+</body>
+</html>
