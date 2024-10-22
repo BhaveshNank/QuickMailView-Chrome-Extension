@@ -1,31 +1,41 @@
 {
-    "manifest_version": 3,
-    "name": "Email Organizer & Smart Labeler",
-    "description": "A Chrome extension to automatically categorize and label emails based on user-defined preferences.",
-    "version": "1.0",
-    "action": {
+  "manifest_version": 3,
+  "name": "Email Organizer & Smart Labeler",
+  "description": "A Chrome extension to automatically categorize and label emails based on user-defined preferences.",
+  "version": "1.0",
+  "action": {
       "default_popup": "popup.html",
       "default_icon": "icon.png"
-    },
-    "permissions": ["activeTab", "storage", "identity", "identity.email"],
-    "background": {
+  },
+  "permissions": [
+      "activeTab", 
+      "storage", 
+      "identity", 
+      "identity.email"
+  ],
+  "host_permissions": [
+      "https://mail.google.com/*",
+      "https://www.googleapis.com/*"
+  ],
+  "background": {
       "service_worker": "background.js"
-    },
-    "content_scripts": [
+  },
+  "content_scripts": [
       {
-        "matches": ["https://mail.google.com/*"],  
-        "js": ["content.js"]
+          "matches": ["https://mail.google.com/*"],  
+          "js": ["content.js"]
       }
-    ],
-    "icons": {
+  ],
+  "icons": {
       "16": "icon.png",
       "48": "icon.png",
       "128": "icon.png"
-    },
-    "oauth2": {
-      "client_id": "233199371315-3gre6et201pbkdbak46cvo3lbgkoi3e2.apps.googleusercontent.com.apps.googleusercontent.com"
-,
+  },
+  "oauth2": {
+      "client_id": "233199371315-3gre6et201pbkdbak46cvo3lbgkoi3e2.apps.googleusercontent.com",
       "scopes": ["https://www.googleapis.com/auth/gmail.readonly"]
-    }
   }
-  
+}
+
+
+

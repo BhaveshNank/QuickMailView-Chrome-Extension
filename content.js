@@ -1,12 +1,14 @@
+console.log("Content script loaded and running on the page!");
 // Function to authenticate and fetch real emails from Gmail
 function fetchEmails() {
     chrome.identity.getAuthToken({interactive: true}, function(token) {
         if (chrome.runtime.lastError) {
-            console.error('Auth Error:', chrome.runtime.lastError);
+            console.error("Authentication error:", chrome.runtime.lastError.message);
             return;
         }
 
         console.log('Got auth token:', token); // Log token for verification
+        console.log('Email IDs fetched:', data);
 
         // Fetch the emails using Gmail API
         fetch('https://www.googleapis.com/gmail/v1/users/me/messages', {
